@@ -4,6 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <!-- ===================== -->
+    <!-- Project Information -->
+    <!-- ===================== -->
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
@@ -11,24 +14,44 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <!-- Centralized properties -->
+    <!-- ===================== -->
+    <!-- Properties -->
+    <!-- ===================== -->
     <properties>
         <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
+    <!-- ===================== -->
+    <!-- Dependencies -->
+    <!-- ===================== -->
+    <dependencies>
+
+        <!-- JUnit for Unit Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ===================== -->
+    <!-- Build Configuration -->
+    <!-- ===================== -->
     <build>
         <plugins>
 
-            <!-- Compiler Plugin -->
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
             </plugin>
 
-            <!-- Shade Plugin (Fat JAR) -->
+            <!-- Maven Shade Plugin (Fat JAR) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -43,7 +66,7 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>hello.HelloWorld</mainClass>
                                 </transformer>
                             </transformers>
